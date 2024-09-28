@@ -1,0 +1,182 @@
+[
+    {
+        "team": "Arizona Diamondbacks",
+        "name": "Chase Field",
+        "lat": 33.452922,
+        "lng": -112.038669
+    },
+    {
+        "team": "Atlanta Braves",
+        "name": "Truist Park",
+        "lat": 33.74691,
+        "lng": -84.391239
+    },
+    {
+        "team": "Baltimore Orioles",
+        "name": "Oriole Park at Camden Yards",
+        "lat": 39.285243,
+        "lng": -76.620103
+    },
+    {
+        "team": "Boston Red Sox",
+        "name": "Fenway Park",
+        "lat": 42.346613,
+        "lng": -71.098817
+    },
+    {
+        "team": "Chicago Cubs",
+        "name": "Wrigley Field",
+        "lat": 42.247201,
+        "lng": -87.856413
+    },
+    {
+        "team": "Chicago White Sox",
+        "name": "Guaranteed Rate Field",
+        "lat": 41.830883,
+        "lng": -87.635083
+    },
+    {
+        "team": "Cincinnati Reds",
+        "name": "Great American Ball Park",
+        "lat": 39.107183,
+        "lng": -84.507713
+    },
+    {
+        "team": "Cleveland Indians",
+        "name": "Progressive Field",
+        "lat": 41.495149,
+        "lng": -81.68709
+    },
+    {
+        "team": "Colorado Rockies",
+        "name": "Coors Field",
+        "lat": 39.75698,
+        "lng": -104.965329
+    },
+    {
+        "team": "Detroit Tigers",
+        "name": "Comerica Park",
+        "lat": 42.346354,
+        "lng": -83.059619
+    },
+    {
+        "team": "Miami Marlins",
+        "name": "Marlins Park",
+        "lat": 25.954428,
+        "lng": -80.238164
+    },
+    {
+        "team": "Houston Astros",
+        "name": "Minute Maid Park",
+        "lat": 29.76045,
+        "lng": -95.369784
+    },
+    {
+        "team": "Kansas City Royals",
+        "name": "Kauffman Stadium",
+        "lat": 39.10222,
+        "lng": -94.583559
+    },
+    {
+        "team": "Los Angeles Angels",
+        "name": "Angel Stadium",
+        "lat": 33.799572,
+        "lng": -117.889031
+    },
+    {
+        "team": "Los Angeles Dodgers",
+        "name": "Dodger Stadium",
+        "lat": 34.072437,
+        "lng": -118.246879
+    },
+    {
+        "team": "Milwaukee Brewers",
+        "name": "Miller Park",
+        "lat": 43.04205,
+        "lng": -87.905599
+    },
+    {
+        "team": "Minnesota Twins",
+        "name": "Target Field",
+        "lat": 44.974346,
+        "lng": -93.259616
+    },
+    {
+        "team": "New York Mets",
+        "name": "Citi Field",
+        "lat": 40.75535,
+        "lng": -73.843219
+    },
+    {
+        "team": "New York Yankees",
+        "name": "Yankee Stadium",
+        "lat": 41.319782,
+        "lng": -73.929939
+    },
+    {
+        "team": "Oakland Athletics",
+        "name": "Oakland Coliseum",
+        "lat": 37.74923,
+        "lng": -122.196487
+    },
+    {
+        "team": "Philadelphia Phillies",
+        "name": "Citizens Bank Park",
+        "lat": 39.952313,
+        "lng": -75.162392
+    },
+    {
+        "team": "Pittsburgh Pirates",
+        "name": "PNC Park",
+        "lat": 40.461503,
+        "lng": -80.008924
+    },
+    {
+        "team": "St. Louis Cardinals",
+        "name": "Busch Stadium",
+        "lat": 38.629683,
+        "lng": -90.188247
+    },
+    {
+        "team": "San Diego Padres",
+        "name": "Petco Park",
+        "lat": 32.752148,
+        "lng": -117.143635
+    },
+    {
+        "team": "San Francisco Giants",
+        "name": "Oracle Park",
+        "lat": 37.57987,
+        "lng": -122.689754
+    },
+    {
+        "team": "Seattle Mariners",
+        "name": "T-Mobile Park",
+        "lat": 47.60174,
+        "lng": -122.330829
+    },
+    {
+        "team": "Tampa Bay Devil Rays",
+        "name": "Tropicana Field",
+        "lat": 27.768487,
+        "lng": -82.648191
+    },
+    {
+        "team": "Texas Rangers",
+        "name": "Globe Life Field",
+        "lat": 32.750156,
+        "lng": -97.081117
+    },
+    {
+        "team": "Toronto Blue Jays",
+        "name": "Rogers Centre",
+        "lat": 43.641653,
+        "lng": -79.3917
+    },
+    {
+        "team": "Washington Nationals",
+        "name": "Nationals Park",
+        "lat": 38.87,
+        "lng": -77.01
+    }
+]
