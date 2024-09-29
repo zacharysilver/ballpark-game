@@ -25,7 +25,7 @@ const App = () => {
 
     
     // give ids to defaultSchedule if not exists
-    defaultSchedule.forEach((entry: any, index) => {
+    defaultSchedule.forEach((entry: any) => {
         if (!entry.id) {
             entry.id = uuidv4();
         }
