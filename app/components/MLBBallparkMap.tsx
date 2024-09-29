@@ -15,7 +15,7 @@ import stadiumsOrig from "@/constants/ballparkList.json";
 import {Stadium} from "@/types/types";
 const stadiums = stadiumsOrig.sort((a, b) => a.team.localeCompare(b.team));
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
-const MLBBallparkMap = ( {width = 850, height = 500}) => {
+const MLBBallparkMap = () => {
     const [selectedStadium, setSelectedStadium] = useState<Stadium | null>(null);
 
     const handleClick = (e: Stadium) => {
@@ -27,10 +27,10 @@ const MLBBallparkMap = ( {width = 850, height = 500}) => {
             <ComposableMap 
                 projection="geoAlbersUsa"
                 style={{
-                    maxHeight: "550"
+                    maxHeight: "550px"
                 }}
-                width={width}
-                height={height}
+                width={850}
+                height={500}
                 >
                 <Geographies 
                     geography={geoUrl} 

@@ -3,11 +3,12 @@
 import MLBBallparkMap from './components/MLBBallparkMap';
 import CustomClock from './components/Clock';
 import Schedule from './components/Schedule';
-import { defaultSchedule } from '@/constants/dev-data';
+import { defaultFlights, defaultSchedule } from '@/constants/dev-data';
 
 import React, { useState } from 'react';
-import { Clock, Plus} from 'lucide-react';
+
 import { ScheduleEntry } from '@/types/types';
+import Flights from './components/Flights';
 
 // Placeholder component for MLBBallparkMap
 
@@ -15,11 +16,7 @@ import { ScheduleEntry } from '@/types/types';
 const App = () => {
     
 
-    const flights = [
-        { airline: 'Spirit Airlines', route: 'LAX to ORD', price: '$256' },
-        { airline: 'United Airlines', route: 'LAX to JFK', price: '$305' },
-        { airline: 'Southwest', route: 'LAX to SFO', price: '$120' },
-    ];
+    const [flights, setFlights] = useState(defaultFlights);
 
     const [schedule, setSchedule] = useState(defaultSchedule);
     
@@ -28,9 +25,16 @@ const App = () => {
     };
     
     const addScheduleEntry = (entry: ScheduleEntry) => {
-        // need to sort by date, then time
-        
-        setSchedule([...schedule, entry]);
+        // keep it sorted based on entry.from.datetime
+        let index = schedule.findIndex(e => new Date(e.from.datetime).getTime() > new Date(entry.from.datetime).getTime());
+
+        // If no larger entry is found, the index will be -1, so we append the entry at the end
+        if (index === -1) {
+            setSchedule([...schedule, entry]);
+        } else {
+            // Insert the entry at the found index
+            setSchedule([...schedule.slice(0, index), entry, ...schedule.slice(index)]);
+        }
     };
     
     const handleReorder = (newSchedule: ScheduleEntry[]) => {
@@ -49,20 +53,7 @@ const App = () => {
             {/* Lists at the bottom */}
             <div className="flex justify-between">
                 {/* List of Flights */}
-                <div className="w-1/2 mr-2 border rounded p-4">
-                    <h2 className="text-xl font-bold mb-2">List of Flights</h2>
-                    <ul>
-                        {flights.map((flight, index) => (
-                            <li key={index} className="mb-2 flex items-center">
-                                <Plus size={20} className="mr-2" />
-                                <div>
-                                    <div className="font-semibold">{flight.airline}</div>
-                                    <div>{flight.route} {flight.price}</div>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                <Flights flights={flights} onChoose={addScheduleEntry}/>
 
                 {/* Schedule */}
                 <Schedule schedule={schedule} onDelete={deleteScheduleEntry} onReorder={handleReorder}/>

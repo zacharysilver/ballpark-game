@@ -31,12 +31,21 @@ export type Stadium = {
 
 
 export type ScheduleLocation = {
-  date: string;
-  time: string;
+  // date: string;
+  // time: string;
+  datetime: Date;
   location: string;
 }
 
 export type ScheduleEntry = {
   from: ScheduleLocation;
   to: ScheduleLocation;
+}
+
+// { airline: 'Spirit Airlines', route: 'LAX to ORD', price: '$256' }
+export type FlightType = {
+  airline: string;
+  from: ScheduleLocation;
+  to: ScheduleLocation;
+  price: number;
 }

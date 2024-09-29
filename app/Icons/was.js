@@ -44,9 +44,9 @@ const WAS = ({ size=100 }) => {
   );
 };
 
-WAS.propTypes = {
-  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-};
+// WAS.propTypes = {
+//   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+// };
 
 
 
