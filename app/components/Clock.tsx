@@ -7,24 +7,25 @@ interface CustomClockProps {
     suppressHydrationWarning?: boolean;
     initialTime?: Date;
     speed?: number; // Speed multiplier for the clock
+    time: Date;
+    setTime: any;
 }
 
 const speedOptions = [1, 5, 20, 50, 100, 250]
 
-const CustomClock: React.FC<CustomClockProps> = ({ suppressHydrationWarning, initialTime, speed = 1 }) => {
-    const [time, setTime] = useState(initialTime || new Date(2024, 3, 1, 9, 0, 0)); // Default to April 1, 9:00 AM
+const CustomClock: React.FC<CustomClockProps> = ({ suppressHydrationWarning, time, setTime, speed = 1}) => {
     const [currentSpeed, setCurrentSpeed] = useState(speed);
     const [isPaused, setIsPaused] = useState(false);
     useEffect(() => {
         const timer = setInterval(() => {
             if (!isPaused) {
-                setTime(prevTime => new Date(prevTime.getTime() + 1000 * currentSpeed));
+                setTime((prevTime: any) => new Date(prevTime.getTime() + 1000 * currentSpeed));
             }
         }, 1000);
         return () => clearInterval(timer);
     }, [currentSpeed, isPaused]);
 
-    const handleSpeedUp = () => setCurrentSpeed(prevSpeed => speedOptions[speedOptions.indexOf(prevSpeed) + 1]);
+    const handleSpeedUp = () => setCurrentSpeed(prevSpeed => speedOptions[(speedOptions.indexOf(prevSpeed) + 1) % speedOptions.length]);
     const handleSlowDown = () => setCurrentSpeed(prevSpeed => speedOptions.indexOf(prevSpeed) > 0 ? speedOptions[speedOptions.indexOf(prevSpeed) - 1] : 1);
     const handlePause = () => setIsPaused(prevState => !prevState);
 

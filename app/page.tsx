@@ -20,6 +20,9 @@ const App = () => {
 
     const [flights, setFlights] = useState(defaultFlights);
     
+    const [time, setTime] = useState(new Date(2024, 3, 1, 9, 0, 0)); // Default to April 1, 9:00 AM
+
+    
     // give ids to defaultSchedule if not exists
     defaultSchedule.forEach((entry: any, index) => {
         if (!entry.id) {
@@ -81,7 +84,7 @@ const App = () => {
     
     return (
         <div className="flex flex-col h-screen p-4">
-            <CustomClock/>
+            <CustomClock time={time} setTime={setTime} />
 
             {/* MLBBallparkMap in the middle */}
             <div className="flex-grow mb-4 transform transition-transform duration-300 scale-75">
@@ -91,7 +94,7 @@ const App = () => {
             {/* Lists at the bottom */}
             <div className="flex justify-between">
                 {/* List of Flights */}
-                <Flights flights={flights} onChoose={addFlightEntry} setFlights={setFlights}/>
+                <Flights flights={flights} onChoose={addFlightEntry} setFlights={setFlights} currentDate={time}/>
 
                 {/* Schedule */}
                 <Schedule schedule={schedule} onDelete={deleteScheduleEntry} onReorder={handleReorder}/>
