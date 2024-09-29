@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useEffect, useState } from "react";
 import {
     ComposableMap,
@@ -8,6 +7,7 @@ import {
     Annotation,
     ZoomableGroup, Marker
 } from "react-simple-maps";
+import ReactTooltip, { Tooltip } from "react-tooltip";
 import StadiumSchedulePopup from "./StadiumSchedulePopup";
 import Popup from "reactjs-popup";
 import logos from "@/app/logos";
@@ -51,20 +51,34 @@ const MLBBallparkMap = () => {
                             radius={20}
                             enableBackground={"white"}
                             key={index}
-                            coordinates={[stadium.lng - 0.5, stadium.lat + 0.5]}
+                            coordinates={[stadium.lng-.5, stadium.lat+.5]}
                             cursor="pointer"
                             onClick={() => {
-                                handleClick(stadium);
+                                setSelectedStadium(stadium);
                             }}
                         >
-                            {React.createElement(logos[index], { size: 20 })}
+                            {React.createElement(logos[index], { size: 20, })}
                         </Marker>
+
                     );
                 })}
-                {selectedStadium && (<Marker coordinates={[selectedStadium.lng - 3, selectedStadium.lat + 3]} >
-                    <StadiumSchedulePopup />
-                </Marker>
-                )}
+            {selectedStadium && (
+                <Popup
+                    open={true}
+                    closeOnDocumentClick
+                    onClose={() => {
+                        setSelectedStadium(null);
+                    }}
+                    contentStyle={{
+                        background: "white",
+                        width: "300px",
+                        height: "300px",
+                        borderRadius: "5px",
+                    }}
+                >
+                    <StadiumSchedulePopup currTime = {new Date(2024, 3, 1, 9, 0, 0)} stadium={selectedStadium}   />
+                </Popup>
+            )}
             </ComposableMap>
 
         </div>
