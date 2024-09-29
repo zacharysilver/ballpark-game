@@ -1,5 +1,7 @@
 export const defaultSchedule = [
     {
+        airline: 'American Airlines',
+        price: 100,
         from: {
             // date: 'Oct 01',
             // time: '14:30',
@@ -13,6 +15,8 @@ export const defaultSchedule = [
         }
     },
     {
+        airline: 'American Airlines',
+        price: 100,
         from: {
             // date: 'Oct 02',
             // time: '9:30',
@@ -26,6 +30,8 @@ export const defaultSchedule = [
         }
     },
     {
+        airline: 'American Airlines',
+        price: 100,
         from: {
             // date: 'Oct 02',
             // time: '14:30',
@@ -39,6 +45,8 @@ export const defaultSchedule = [
         }
     },
     {
+        airline: 'American Airlines',
+        price: 100,
         from: {
             // date: 'Oct 03',
             // time: '9:30',
@@ -52,6 +60,8 @@ export const defaultSchedule = [
         }
     },
     {
+        airline: 'American Airlines',
+        price: 100,
         from: {
             // date: 'Oct 03',
             // time: '14:30',
