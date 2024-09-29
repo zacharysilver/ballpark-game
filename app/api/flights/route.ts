@@ -1,5 +1,3 @@
-import Papa from 'papaparse';
-import fs from 'fs';
 
 import FlightsData from '@/constants/combined_flights_data.json';
 
