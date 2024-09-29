@@ -13,27 +13,28 @@ const speedOptions = [1, 5, 20, 50, 100, 250]
 
 const CustomClock: React.FC<CustomClockProps> = ({ suppressHydrationWarning, initialTime, speed = 1 }) => {
     const [time, setTime] = useState(initialTime || new Date(2024, 3, 1, 9, 0, 0)); // Default to April 1, 9:00 AM
-    const [currentSpeed, setCurrentSpeed] = useState(speed);
+const [currentSpeed, setCurrentSpeed] = useState(speed);
     const [isPaused, setIsPaused] = useState(false);
     useEffect(() => {
         const timer = setInterval(() => {
-            if (!isPaused) {
+            if(!isPaused){
                 setTime(prevTime => new Date(prevTime.getTime() + 1000 * currentSpeed));
             }
         }, 1000);
         return () => clearInterval(timer);
     }, [currentSpeed, isPaused]);
 
-    const handleSpeedUp = () => setCurrentSpeed(prevSpeed => speedOptions[speedOptions.indexOf(prevSpeed) + 1]);
-    const handleSlowDown = () => setCurrentSpeed(prevSpeed => speedOptions.indexOf(prevSpeed) > 0 ? speedOptions[speedOptions.indexOf(prevSpeed) - 1] : 1);
+    const handleSpeedUp = () => setCurrentSpeed(prevSpeed => speedOptions[(speedOptions.indexOf(prevSpeed) + 1)%speedOptions.length]);
+    const handleSlowDown = () => setCurrentSpeed(prevSpeed => speedOptions.indexOf(prevSpeed)>0 ? speedOptions[speedOptions.indexOf(prevSpeed) - 1]: 1);
     const handlePause = () => setIsPaused(prevState => !prevState);
 
+    
+    // Render nothing on the server (before mount)
 
     return (
-        <div className="text-center mb-4">
-            <h1 className="text-8xl font-bold flex items-center justify-center 20px" suppressHydrationWarning={suppressHydrationWarning}>
-                {time.toDateString()}</h1>
-            <h1 className="text-6xl font-bold flex items-center justify-center 20px" suppressHydrationWarning={suppressHydrationWarning}>
+        /* Clock at the top */ 
+        < div className = "text-center mb-4" >
+            <h1 className="text-3xl font-bold flex items-center justify-center">
                 <Clock className="mr-2" />
                 {time.toLocaleTimeString()} &ensp; Speed: {currentSpeed}x
             </h1>
