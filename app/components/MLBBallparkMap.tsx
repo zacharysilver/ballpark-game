@@ -23,8 +23,15 @@ const MLBBallparkMap = () => {
     }
 
     return (
-        <div className="relative">
-            <ComposableMap projection="geoAlbersUsa">
+        <div className="relative flex justify-center items-center">
+            <ComposableMap 
+                projection="geoAlbersUsa"
+                style={{
+                    maxHeight: "550"
+                }}
+                width={850}
+                height={500}
+                >
                 <Geographies 
                     geography={geoUrl} 
                 >
@@ -66,7 +73,6 @@ const MLBBallparkMap = () => {
                 </Marker>
                 )}
             </ComposableMap>
-
         </div>
     );
 };

@@ -2,9 +2,11 @@ import { ScheduleEntry } from '@/types/types';
 import { X } from 'lucide-react';
 
 
+
 export type ScheduleProps = {
     schedule: ScheduleEntry[];
     onDelete: (index: number) => void;
+    onReorder: (newSchedule: ScheduleEntry[]) => void;
 }
 
 const Schedule: React.FC<ScheduleProps> = ( { schedule, onDelete }) => {

@@ -28,9 +28,15 @@ const App = () => {
     };
     
     const addScheduleEntry = (entry: ScheduleEntry) => {
+        // need to sort by date, then time
+        
         setSchedule([...schedule, entry]);
     };
-
+    
+    const handleReorder = (newSchedule: ScheduleEntry[]) => {
+        setSchedule(newSchedule);
+    };
+    
     return (
         <div className="flex flex-col h-screen p-4">
             <CustomClock/>
@@ -59,7 +65,7 @@ const App = () => {
                 </div>
 
                 {/* Schedule */}
-                <Schedule schedule={schedule} onDelete={deleteScheduleEntry} />
+                <Schedule schedule={schedule} onDelete={deleteScheduleEntry} onReorder={handleReorder}/>
             </div>
         </div>
     );
