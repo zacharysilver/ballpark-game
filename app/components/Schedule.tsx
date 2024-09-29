@@ -8,6 +8,7 @@ export type ScheduleProps = {
     schedule: ScheduleEntry[];
     onDelete: (index: number) => void;
     onReorder: (newSchedule: ScheduleEntry[]) => void;
+    currentDate: Date;
 }
 const fmt = new Intl.DateTimeFormat('en-US', {
     month: 'long',
@@ -20,7 +21,7 @@ const formatDateTime = (date: Date) => {
     return fmt.format(date);
 };
 
-const Schedule: React.FC<ScheduleProps> = ( { schedule, onDelete }) => {
+const Schedule: React.FC<ScheduleProps> = ( { schedule, onDelete, currentDate }) => {
 
     
     return (

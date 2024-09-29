@@ -144,3 +144,9 @@ export const city2coord = {
         "lng": -84.391239
     }
 }
+
+// export const validCities = Object.keys(city2coord).map(city => city.split(',')[0]);
+export const validCities: string[] = [];
+for (const city in city2coord) {
+    validCities.push(city.split(',')[0].toLowerCase());
+}

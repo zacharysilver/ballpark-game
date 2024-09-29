@@ -98,7 +98,7 @@ const App = () => {
                 <Flights flights={flights} onChoose={addFlightEntry} setFlights={setFlights} currentDate={time}/>
 
                 {/* Schedule */}
-                <Schedule schedule={schedule} onDelete={deleteScheduleEntry} onReorder={handleReorder}/>
+                <Schedule schedule={schedule} onDelete={deleteScheduleEntry} onReorder={handleReorder} currentDate={time}/>
             </div>
             
             <Footer />

@@ -7,6 +7,7 @@ import Input from "./ui/input";
 import Button from "./ui/button";
 
 import { disambiguator } from "@/constants/dictionaries";
+import { airport2city, validCities } from "@/constants/airport-mapping";
 
 export type FlightsProps = {
     flights: FlightEntry[];
@@ -26,16 +27,42 @@ const formatDateTime = (date: Date) => {
     return fmt.format(date);
 };
 
+function isAirport(loc: string) {
+    return loc in airport2city;
+}
+function areEquivalent(aloc: string, bloc: string) {
+    const aairport = isAirport(aloc);
+    
+    if (aairport) {
+        return aloc.toLowerCase() === bloc.toLowerCase();
+    }
+    
+    console.log(aloc, bloc)
+    
+    // if not an airport, then convert both into city names
+    const citypart = aloc.split(',')[0].toLowerCase();
+    if (validCities.includes(citypart)) {
+        const bcity = airport2city[bloc as 'JFK'].split(',')[0];
+        console.log(citypart, bcity);
+        return citypart.toLowerCase() === bcity.toLowerCase();
+    }
+}
 
 const Flights: React.FC<FlightsProps> = ( {flights, onChoose, setFlights, currentDate}) => {
     const [getFrom, setFrom] = useState('');
     const [dest, setDest] = useState('');
+    
 
     const handleFilter = () => {
+        console.log(validCities);
         const filteredFlights = (flightsOrig as any).data.filter((flight: any) =>
-            flight.SA.toLowerCase() === getFrom.toLowerCase() &&
-            flight.DA.toLowerCase() === dest.toLowerCase()
+            // flight.SA.toLowerCase() === getFrom.toLowerCase() &&
+            // flight.DA.toLowerCase() === dest.toLowerCase()
+            areEquivalent(getFrom, flight.SA) &&
+            areEquivalent(dest, flight.DA)
+            
         );
+        
         // construct valid stuff
         const correct = filteredFlights.map((flight: any) => {
             // const ST = flight.ST ?? '2024-10-05';
@@ -88,6 +115,7 @@ const Flights: React.FC<FlightsProps> = ( {flights, onChoose, setFlights, curren
                 <ul>
                     {flights.map((flight, index) => (
                         <li key={index} className="border-b pb-2 last:border-b-0 mb-2 flex items-center">
+                            <Plus size={20} className="mr-2 cursor-pointer" onClick={() => onChoose(flight)} />
                             <div className='flex-grow flex flex-row justify-between'>
                                 <div>
                                     <div className="font-semibold">{flight.airline}</div>
@@ -98,7 +126,7 @@ const Flights: React.FC<FlightsProps> = ( {flights, onChoose, setFlights, curren
                                     <div>{formatDateTime(flight.to.datetime)}</div>
                                 </div>
                             </div>
-                            <Plus size={20} className="ml-2 cursor-pointer" onClick={() => onChoose(flight)} />
+                            
 
                             
                         </li>

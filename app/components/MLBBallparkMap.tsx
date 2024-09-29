@@ -67,9 +67,10 @@ const MLBBallparkMap: React.FC<BallparkProps> = ({ flights }) => {
                             key={index}
                             from={[coordF['lng'], coordF['lat']]}
                             to={[coordT['lng'], coordT['lat']]}
-                            stroke="#FF5533"
+                            stroke="#3030F0"
                             strokeWidth={2}
                             strokeLinecap="round"
+                            strokeDasharray="5,5"
                         />
                     );
                 })}

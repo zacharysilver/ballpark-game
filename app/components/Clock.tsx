@@ -32,16 +32,16 @@ const CustomClock: React.FC<CustomClockProps> = ({ suppressHydrationWarning, tim
 
     return (
         <div className="text-center mb-4">
-            <h1 className="text-8xl font-bold flex items-center justify-center 20px" suppressHydrationWarning={suppressHydrationWarning}>
+            <h1 className="text-4xl font-bold flex items-center justify-center 20px" suppressHydrationWarning={suppressHydrationWarning}>
                 {time.toDateString()}</h1>
-            <h1 className="text-6xl font-bold flex items-center justify-center 20px" suppressHydrationWarning={suppressHydrationWarning}>
+            <h1 className="text-3xl font-bold flex items-center justify-center 20px" suppressHydrationWarning={suppressHydrationWarning}>
                 <Clock className="mr-2" />
                 {time.toLocaleTimeString()} &ensp; Speed: {currentSpeed}x
             </h1>
             <div className="flex justify-center mt-4">
-                <button onClick={handleSpeedUp} className="mx-5 px-10 py-5 bg-blue-500 text-white rounded text-4xl">Speed Up</button>
-                <button onClick={handleSlowDown} className="mx-5 px-10 py-5 bg-blue-500 text-white rounded text-4xl">Slow Down</button>
-                <button onClick={handlePause} className="mx-5 px-10 py-5 bg-blue-500 text-white rounded text-4xl">{isPaused ? "Resume" : "Pause"}</button>
+                <button onClick={handleSpeedUp} className="mx-5 px-3 py-3 bg-blue-500 text-white rounded text-2l">Speed Up</button>
+                <button onClick={handleSlowDown} className="mx-5 px-3 py-3 bg-blue-500 text-white rounded text-2l">Slow Down</button>
+                <button onClick={handlePause} className="mx-5 px-3 py-3 bg-blue-500 text-white rounded text-2l">{isPaused ? "Resume" : "Pause"}</button>
             </div>
         </div>
     );
