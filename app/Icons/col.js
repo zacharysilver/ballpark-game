@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const COL = props => {
-  const { size } = props;
+const COL = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -29,8 +28,6 @@ COL.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-COL.defaultProps = {
-  size: '100'
-};
+
 
 export default COL;

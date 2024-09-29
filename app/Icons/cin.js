@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CIN = props => {
-  const { size } = props;
+const CIN = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -65,8 +64,6 @@ CIN.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-CIN.defaultProps = {
-  size: '100'
-};
+
 
 export default CIN;

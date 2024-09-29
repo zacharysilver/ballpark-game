@@ -30,7 +30,8 @@ import TEX from './Icons/tex';
 import TOR from './Icons/tor';
 import WAS from './Icons/was';
 const logos = [
-    ARI, ATL, BAL, BOS, CHC, CHW, CIN, CLE, COL, DET, HOU, KAN, LAA, LAD, MIA, MIL, MIN, NYM, NYY, OAK,
+    ARI, ATL, 
+    BAL, BOS, CHC, CHW, CIN, CLE, COL, DET, HOU, KAN, LAA, LAD, MIA, MIL, MIN, NYM, NYY, OAK,
     PHI, PIT, SD, SF, SEA, STL, TB, TEX, TOR, WAS
 ];
 
