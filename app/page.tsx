@@ -88,7 +88,7 @@ const App = () => {
             <CustomClock time={time} setTime={setTime} />
 
             {/* MLBBallparkMap in the middle */}
-            <div className="flex-grow mb-4 transform transition-transform duration-300 scale-75">
+            <div className="">
                 <MLBBallparkMap flights={schedule} />
             </div>
 

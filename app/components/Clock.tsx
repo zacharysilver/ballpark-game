@@ -18,17 +18,19 @@ const CustomClock: React.FC<CustomClockProps> = ({ suppressHydrationWarning, tim
     const [isPaused, setIsPaused] = useState(false);
     useEffect(() => {
         const timer = setInterval(() => {
-            if (!isPaused) {
+            if(!isPaused){
                 setTime((prevTime: any) => new Date(prevTime.getTime() + 1000 * currentSpeed));
             }
         }, 1000);
         return () => clearInterval(timer);
     }, [currentSpeed, isPaused]);
 
-    const handleSpeedUp = () => setCurrentSpeed(prevSpeed => speedOptions[(speedOptions.indexOf(prevSpeed) + 1) % speedOptions.length]);
-    const handleSlowDown = () => setCurrentSpeed(prevSpeed => speedOptions.indexOf(prevSpeed) > 0 ? speedOptions[speedOptions.indexOf(prevSpeed) - 1] : 1);
+    const handleSpeedUp = () => setCurrentSpeed(prevSpeed => speedOptions[(speedOptions.indexOf(prevSpeed) + 1)%speedOptions.length]);
+    const handleSlowDown = () => setCurrentSpeed(prevSpeed => speedOptions.indexOf(prevSpeed)>0 ? speedOptions[speedOptions.indexOf(prevSpeed) - 1]: 1);
     const handlePause = () => setIsPaused(prevState => !prevState);
 
+    
+    // Render nothing on the server (before mount)
 
     return (
         <div className="text-center mb-4">
