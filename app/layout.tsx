@@ -16,8 +16,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Workout Tracker",
-  description: "Track your workouts and get stronger",
+  title: "Ballgame Race",
+  description: "Travel the United States and visit all 30 Major League Baseball stadiums",
 };
 
 export default function RootLayout({

@@ -23,9 +23,11 @@ const MLBBallparkMap = () => {
     }
 
     return (
-        <div className="relative w-full h-[600px]">
+        <div className="relative">
             <ComposableMap projection="geoAlbersUsa">
-                <Geographies geography={geoUrl}>
+                <Geographies 
+                    geography={geoUrl} 
+                >
                     {({ geographies }) =>
                         geographies.map((geo) => (
                             <Geography
@@ -33,6 +35,12 @@ const MLBBallparkMap = () => {
                                 geography={geo}
                                 fill="#EAEAEC"
                                 stroke="#D6D6DA"
+                                tabIndex={-1}
+                                style={{
+                                    default: { outline: "none" },
+                                    hover: { outline: "none" },
+                                    pressed: { outline: "none" },
+                                }}
                             />
                         ))
                     }

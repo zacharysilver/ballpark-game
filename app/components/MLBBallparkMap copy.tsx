@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useEffect, useState } from "react";
 import {
@@ -8,20 +8,15 @@ import {
     Annotation,
     ZoomableGroup, Marker
 } from "react-simple-maps";
+import StadiumSchedulePopup from "./StadiumSchedulePopup";
 import Popup from "reactjs-popup";
 import logos from "@/app/logos";
 import stadiumsOrig from "@/constants/ballparkList.json";
+import {Stadium} from "@/types/types";
 const stadiums = stadiumsOrig.sort((a, b) => a.team.localeCompare(b.team));
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
-
-interface Stadium {
-    team: string;
-    address: string;
-    lat: number;
-    lng: number;
-}
 const MLBBallparkMap = () => {
-    const [selectedStadium, setSelectedStadium] = useState<Stadium|null>(null);
+    const [selectedStadium, setSelectedStadium] = useState<Stadium | null>(null);
 
     const handleClick = (e: Stadium) => {
         setSelectedStadium(e);
@@ -32,42 +27,60 @@ const MLBBallparkMap = () => {
             <ComposableMap projection="geoAlbersUsa">
                 <Geographies geography={geoUrl}>
                     {({ geographies }) =>
-                        geographies.map(geo => (
+                        geographies.map((geo) => (
                             <Geography
                                 key={geo.rsmKey}
                                 geography={geo}
                                 fill="#EAEAEC"
                                 stroke="#D6D6DA"
-
                             />
                         ))
                     }
                 </Geographies>
                 {stadiums.map((stadium, index) => {
-
                     return (
-                        <Marker enableBackground={"white"} key={index} coordinates={[stadium.lng - .5, stadium.lat + .5]} onClick={() => { handleClick(stadium) }}>
+                        <Marker
+                            radius={20}
+                            enableBackground={"white"}
+                            key={index}
+                            coordinates={[stadium.lng - 0.5, stadium.lat + 0.5]}
+                            cursor="pointer"
+                            onClick={() => {
+                                handleClick(stadium);
+                            }}
+                        >
                             {React.createElement(logos[index], { size: 20 })}
-
-
                         </Marker>
-
-
                     );
                 })}
-
+                {selectedStadium && (<Marker coordinates={[selectedStadium.lng - 3, selectedStadium.lat + 3]} >
+                    <StadiumSchedulePopup />
+                </Marker>
+                )}
             </ComposableMap>
-            {selectedStadium && (
-                <Popup open={true} closeOnDocumentClick onClose={() => { setSelectedStadium(null) }}>
-                    <div className="w-[300px] h-[300px]">
-                        <h2>{selectedStadium.team}</h2>
-                        <p>hello</p>
-                    </div></Popup>)
-            }
-        </div>
 
+        </div>
     );
 };
 
 export default MLBBallparkMap;
 
+
+/*<Popup
+open={true}
+closeOnDocumentClick
+onClose={() => {
+  setSelectedStadium(null);
+}}
+contentStyle={{
+  background: "white",
+  width: "300px",
+  height: "300px",
+  borderRadius: "5px",
+}}
+>
+<div>
+  <h2>{selectedStadium.team}</h2>
+  <p>hello</p>
+</div>
+</Popup>*/
