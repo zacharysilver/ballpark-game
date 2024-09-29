@@ -1,8 +1,13 @@
+"use client";
+
 import MLBBallparkMap from './components/MLBBallparkMap';
 import CustomClock from './components/Clock';
+import Schedule from './components/Schedule';
+import { defaultSchedule } from '@/constants/dev-data';
 
-import React from 'react';
-import { Clock, Plus, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { Clock, Plus} from 'lucide-react';
+import { ScheduleEntry } from '@/types/types';
 
 // Placeholder component for MLBBallparkMap
 
@@ -16,12 +21,15 @@ const App = () => {
         { airline: 'Southwest', route: 'LAX to SFO', price: '$120' },
     ];
 
-    const schedule = [
-        { date: '10-05', time: '3:40', location: 'DAL' },
-        { date: '10-05', time: '8:70', location: 'IAH' },
-        { date: '10-05', time: '12:20', location: 'IAH' },
-        { date: '10-05', time: '19:25', location: 'DEN' },
-    ];
+    const [schedule, setSchedule] = useState(defaultSchedule);
+    
+    const deleteScheduleEntry = (index: number) => {
+        setSchedule(schedule.filter((_, i) => i !== index));
+    };
+    
+    const addScheduleEntry = (entry: ScheduleEntry) => {
+        setSchedule([...schedule, entry]);
+    };
 
     return (
         <div className="flex flex-col h-screen p-4">
@@ -51,17 +59,7 @@ const App = () => {
                 </div>
 
                 {/* Schedule */}
-                <div className="w-1/2 ml-2 border rounded p-4">
-                    <h2 className="text-xl font-bold mb-2">Schedule</h2>
-                    <ul>
-                        {schedule.map((item, index) => (
-                            <li key={index} className="mb-2 flex items-center justify-between">
-                                <div>{item.date} {item.time} {item.location}</div>
-                                <X size={20} className="text-red-500" />
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                <Schedule schedule={schedule} onDelete={deleteScheduleEntry} />
             </div>
         </div>
     );

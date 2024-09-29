@@ -28,3 +28,15 @@ export type Stadium = {
   lat: number;
   lng: number;
 }
+
+
+export type ScheduleLocation = {
+  date: string;
+  time: string;
+  location: string;
+}
+
+export type ScheduleEntry = {
+  from: ScheduleLocation;
+  to: ScheduleLocation;
+}
