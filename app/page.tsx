@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import { FlightEntry, ScheduleEntry } from '@/types/types';
 import Flights from './components/Flights';
 import { v4 as uuidv4 } from 'uuid';
+import Footer from './components/Footer';
 
 
 // Placeholder component for MLBBallparkMap
@@ -88,7 +89,7 @@ const App = () => {
 
             {/* MLBBallparkMap in the middle */}
             <div className="flex-grow mb-4 transform transition-transform duration-300 scale-75">
-                <MLBBallparkMap />
+                <MLBBallparkMap flights={schedule} />
             </div>
 
             {/* Lists at the bottom */}
@@ -99,6 +100,8 @@ const App = () => {
                 {/* Schedule */}
                 <Schedule schedule={schedule} onDelete={deleteScheduleEntry} onReorder={handleReorder}/>
             </div>
+            
+            <Footer />
         </div>
     );
 };
