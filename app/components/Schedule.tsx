@@ -52,8 +52,8 @@ const Schedule: React.FC<ScheduleProps> = ( { schedule, onDelete, currentDate })
                                 <div>{item.from.location} to {item.to.location} ${item.price}</div>
                             </div>
                             <div>
-                                <div>{formatDateTime(item.to.datetime)}</div>
                                 <div>{formatDateTime(item.from.datetime)}</div>
+                                <div>{formatDateTime(item.to.datetime)}</div>
                             </div>
                         </div>
                         <X size={20} className="text-red-500 ml-2 flex-shrink-0 cursor-pointer"

@@ -11,7 +11,7 @@ interface CustomClockProps {
     setTime: any;
 }
 
-const speedOptions = [1, 5, 20, 50, 100, 250]
+const speedOptions = [1, 5, 20, 50, 100, 250, 14400]
 
 const CustomClock: React.FC<CustomClockProps> = ({ suppressHydrationWarning, time, setTime, speed = 1}) => {
     const [currentSpeed, setCurrentSpeed] = useState(speed);
