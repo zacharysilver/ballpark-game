@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PHI = props => {
-  const { size } = props;
+const PHI = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -34,8 +33,6 @@ PHI.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-PHI.defaultProps = {
-  size: '100'
-};
+
 
 export default PHI;

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MLB = props => {
-  const { size } = props;
+const MLB = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -37,8 +36,6 @@ MLB.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-MLB.defaultProps = {
-  size: '100'
-};
+
 
 export default MLB;

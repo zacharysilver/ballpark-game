@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const NYY = props => {
-  const { size } = props;
+const NYY = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -39,8 +38,6 @@ NYY.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-NYY.defaultProps = {
-  size: '100'
-};
+
 
 export default NYY;

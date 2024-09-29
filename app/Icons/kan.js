@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const KAN = props => {
-  const { size } = props;
+const KAN = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -34,8 +33,6 @@ KAN.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-KAN.defaultProps = {
-  size: '100'
-};
+
 
 export default KAN;

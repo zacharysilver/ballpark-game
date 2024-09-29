@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PIT = props => {
-  const { size } = props;
+const PIT = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -25,8 +24,6 @@ PIT.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-PIT.defaultProps = {
-  size: '100'
-};
+
 
 export default PIT;

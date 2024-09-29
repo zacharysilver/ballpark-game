@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MIA = props => {
-  const { size } = props;
+const MIA = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -81,8 +80,6 @@ MIA.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-MIA.defaultProps = {
-  size: '100'
-};
+
 
 export default MIA;

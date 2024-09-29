@@ -15,7 +15,7 @@ import stadiumsOrig from "@/constants/ballparkList.json";
 import {Stadium} from "@/types/types";
 const stadiums = stadiumsOrig.sort((a, b) => a.team.localeCompare(b.team));
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
-const MLBBallparkMap = () => {
+const MLBBallparkMap = ( {width = 850, height = 500}) => {
     const [selectedStadium, setSelectedStadium] = useState<Stadium | null>(null);
 
     const handleClick = (e: Stadium) => {
@@ -29,8 +29,8 @@ const MLBBallparkMap = () => {
                 style={{
                     maxHeight: "550"
                 }}
-                width={850}
-                height={500}
+                width={width}
+                height={height}
                 >
                 <Geographies 
                     geography={geoUrl} 

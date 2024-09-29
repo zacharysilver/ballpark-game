@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ATL = props => {
-  const { size } = props;
+const ATL = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -37,8 +36,6 @@ ATL.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-ATL.defaultProps = {
-  size: '100'
-};
+
 
 export default ATL;

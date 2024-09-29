@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TOR = props => {
-  const { size } = props;
+const TOR = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -53,8 +52,6 @@ TOR.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-TOR.defaultProps = {
-  size: '100'
-};
+
 
 export default TOR;

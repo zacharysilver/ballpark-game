@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OAK = props => {
-  const { size } = props;
+const OAK = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -41,8 +40,6 @@ OAK.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-OAK.defaultProps = {
-  size: '100'
-};
+
 
 export default OAK;

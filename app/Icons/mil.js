@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const MIL = props => {
-  const { size } = props;
+const MIL = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -37,8 +36,6 @@ MIL.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-MIL.defaultProps = {
-  size: '100'
-};
+
 
 export default MIL;

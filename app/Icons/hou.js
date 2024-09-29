@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const HOU = props => {
-  const { size } = props;
+const HOU = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -57,8 +56,6 @@ HOU.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-HOU.defaultProps = {
-  size: '100'
-};
+
 
 export default HOU;

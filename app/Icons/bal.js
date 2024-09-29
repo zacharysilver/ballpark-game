@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const BAL = props => {
-  const { size } = props;
+const BAL = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -39,8 +38,6 @@ BAL.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-BAL.defaultProps = {
-  size: '100'
-};
+
 
 export default BAL;

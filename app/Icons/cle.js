@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CLE = props => {
-  const { size } = props;
+const CLE = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -29,8 +28,6 @@ CLE.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-CLE.defaultProps = {
-  size: '100'
-};
+
 
 export default CLE;

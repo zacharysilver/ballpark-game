@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CHC = props => {
-  const { size } = props;
+const CHC = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -37,8 +36,6 @@ CHC.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-CHC.defaultProps = {
-  size: '100'
-};
+
 
 export default CHC;

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const LAA = props => {
-  const { size } = props;
+const LAA = ({ size=100 }) => {
   return (
     <svg
       width={size}
@@ -45,8 +44,6 @@ LAA.propTypes = {
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
 };
 
-LAA.defaultProps = {
-  size: '100'
-};
+
 
 export default LAA;
