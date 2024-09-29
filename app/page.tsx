@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import { FlightEntry, ScheduleEntry } from '@/types/types';
 import Flights from './components/Flights';
 import { v4 as uuidv4 } from 'uuid';
+import Footer from './components/Footer';
 
 
 // Placeholder component for MLBBallparkMap
@@ -19,6 +20,9 @@ const App = () => {
     
 
     const [flights, setFlights] = useState(defaultFlights);
+    
+    const [time, setTime] = useState(new Date(2024, 3, 1, 9, 0, 0)); // Default to April 1, 9:00 AM
+
     
     // give ids to defaultSchedule if not exists
     defaultSchedule.forEach((entry: any, index) => {
@@ -81,21 +85,23 @@ const App = () => {
     
     return (
         <div className="flex flex-col h-screen p-4">
-            <CustomClock/>
+            <CustomClock time={time} setTime={setTime} />
 
             {/* MLBBallparkMap in the middle */}
             <div className="">
-                <MLBBallparkMap />
+                <MLBBallparkMap flights={schedule} />
             </div>
 
             {/* Lists at the bottom */}
             <div className="flex justify-between">
                 {/* List of Flights */}
-                <Flights flights={flights} onChoose={addFlightEntry} setFlights={setFlights}/>
+                <Flights flights={flights} onChoose={addFlightEntry} setFlights={setFlights} currentDate={time}/>
 
                 {/* Schedule */}
                 <Schedule schedule={schedule} onDelete={deleteScheduleEntry} onReorder={handleReorder}/>
             </div>
+            
+            <Footer />
         </div>
     );
 };

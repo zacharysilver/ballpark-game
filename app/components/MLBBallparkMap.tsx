@@ -5,17 +5,23 @@ import {
     Geographies,
     Geography,
     Annotation,
-    ZoomableGroup, Marker
+    ZoomableGroup, Marker,
+    Line
 } from "react-simple-maps";
 import ReactTooltip, { Tooltip } from "react-tooltip";
 import StadiumSchedulePopup from "./StadiumSchedulePopup";
 import Popup from "reactjs-popup";
 import logos from "@/app/logos";
 import stadiumsOrig from "@/constants/ballparkList.json";
-import {Stadium} from "@/types/types";
+import { city2coord, airport2city } from "@/constants/airport-mapping";
+import {FlightEntry, Stadium} from "@/types/types";
 const stadiums = stadiumsOrig.sort((a, b) => a.team.localeCompare(b.team));
 const geoUrl = "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json";
-const MLBBallparkMap = () => {
+
+interface BallparkProps {
+    flights: FlightEntry[];
+}
+const MLBBallparkMap: React.FC<BallparkProps> = ({ flights }) => {
     const [selectedStadium, setSelectedStadium] = useState<Stadium | null>(null);
 
     const handleClick = (e: Stadium) => {
@@ -52,6 +58,22 @@ const MLBBallparkMap = () => {
                         ))
                     }
                 </Geographies>
+                {flights.map((path, index) => {
+                    const [airportF, airportT] = [path.from.location, path.to.location];
+                    const [cityF, cityT] = [(airport2city as any)[airportF], (airport2city as any)[airportT]];
+                    const [coordF, coordT] = [city2coord[cityF as 'Boston, MA'], city2coord[cityT as 'Boston, MA']];
+                    return (
+                        <Line
+                            key={index}
+                            from={[coordF['lng'], coordF['lat']]}
+                            to={[coordT['lng'], coordT['lat']]}
+                            stroke="#FF5533"
+                            strokeWidth={2}
+                            strokeLinecap="round"
+                        />
+                    );
+                })}
+                
                 {stadiums.map((stadium, index) => {
                     return (
                         <Marker

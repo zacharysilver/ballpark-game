@@ -12,6 +12,7 @@ export type FlightsProps = {
     flights: FlightEntry[];
     onChoose: (flight: FlightEntry) => void;
     setFlights: (flights: FlightEntry[]) => void;
+    currentDate: Date;
 }
 
 const fmt = new Intl.DateTimeFormat('en-US', {
@@ -26,7 +27,7 @@ const formatDateTime = (date: Date) => {
 };
 
 
-const Flights: React.FC<FlightsProps> = ( {flights, onChoose, setFlights}) => {
+const Flights: React.FC<FlightsProps> = ( {flights, onChoose, setFlights, currentDate}) => {
     const [getFrom, setFrom] = useState('');
     const [dest, setDest] = useState('');
 
@@ -40,15 +41,25 @@ const Flights: React.FC<FlightsProps> = ( {flights, onChoose, setFlights}) => {
             // const ST = flight.ST ?? '2024-10-05';
             const A = flight.A;
             const airline = A in disambiguator['carriers'] ? (disambiguator as any)['carriers'][A] : A;
+            const og_DT = new Date(flight.DT) as Date;
+            const og_AT = new Date(flight.AT) as Date;
+            
+            // Calculate the offset in whole days
+            const offsetInDays = Math.floor((og_DT.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24));
+
+            // Subtract the offset from both og_DT and og_AT
+            const adjusted_DT = new Date(og_DT.getTime() - offsetInDays * 24 * 60 * 60 * 1000);
+            const adjusted_AT = new Date(og_AT.getTime() - offsetInDays * 24 * 60 * 60 * 1000);
+
             return {
                 airline: airline,
                 from: {
                     location: flight.SA,
-                    datetime: new Date(flight.DT)
+                    datetime: adjusted_DT // new Date(flight.DT)
                 },
                 to: {
                     location: flight.DA,
-                    datetime: new Date(flight.AT)
+                    datetime: adjusted_AT // new Date(flight.AT)
                 },
                 price: flight.P
             };
