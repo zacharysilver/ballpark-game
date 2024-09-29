@@ -91,7 +91,7 @@ const App = () => {
             {/* Lists at the bottom */}
             <div className="flex justify-between">
                 {/* List of Flights */}
-                <Flights flights={flights} onChoose={addFlightEntry}/>
+                <Flights flights={flights} onChoose={addFlightEntry} setFlights={setFlights}/>
 
                 {/* Schedule */}
                 <Schedule schedule={schedule} onDelete={deleteScheduleEntry} onReorder={handleReorder}/>
