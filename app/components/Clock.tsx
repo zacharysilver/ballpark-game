@@ -13,7 +13,7 @@ interface CustomClockProps {
 
 const speedOptions = [1, 5, 20, 50, 100, 250]
 
-const CustomClock: React.FC<CustomClockProps> = ({ suppressHydrationWarning, time, setTime, speed = 1}) => {
+const CustomClock: React.FC<CustomClockProps> = ({time, setTime, speed = 1}) => {
     const [currentSpeed, setCurrentSpeed] = useState(speed);
     const [isPaused, setIsPaused] = useState(false);
     useEffect(() => {
@@ -35,6 +35,9 @@ const CustomClock: React.FC<CustomClockProps> = ({ suppressHydrationWarning, tim
     return (
         /* Clock at the top */ 
         < div className = "text-center mb-4" >
+            <h1 className="text-3xl font-bold flex items-center justify-center">
+                {time.toDateString()}
+            </h1>
             <h1 className="text-3xl font-bold flex items-center justify-center">
                 <Clock className="mr-2" />
                 {time.toLocaleTimeString()} &ensp; Speed: {currentSpeed}x

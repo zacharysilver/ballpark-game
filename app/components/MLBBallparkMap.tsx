@@ -1,14 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
     ComposableMap,
     Geographies,
     Geography,
-    Annotation,
-    ZoomableGroup, Marker,
+    Marker,
     Line
 } from "react-simple-maps";
-import ReactTooltip, { Tooltip } from "react-tooltip";
 import StadiumSchedulePopup from "./StadiumSchedulePopup";
 import Popup from "reactjs-popup";
 import logos from "@/app/logos";
@@ -23,10 +21,6 @@ interface BallparkProps {
 }
 const MLBBallparkMap: React.FC<BallparkProps> = ({ flights }) => {
     const [selectedStadium, setSelectedStadium] = useState<Stadium | null>(null);
-
-    const handleClick = (e: Stadium) => {
-        setSelectedStadium(e);
-    }
 
     return (
         <div className="relative flex justify-center items-center">

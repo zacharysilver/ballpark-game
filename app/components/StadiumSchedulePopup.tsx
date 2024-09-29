@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import gameSchedule from '@/constants/games.json';
 import { Stadium } from '@/types/types';
-import Clock from "./Clock"
 interface CustomStadiumSchedulePopupProps {
     currTime: Date;
     stadium: Stadium;

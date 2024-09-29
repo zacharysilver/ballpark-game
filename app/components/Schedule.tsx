@@ -1,5 +1,4 @@
 import { ScheduleEntry } from '@/types/types';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { X } from 'lucide-react';
 
 
